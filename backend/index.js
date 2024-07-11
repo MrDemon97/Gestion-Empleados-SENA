@@ -7,7 +7,7 @@ const cors = require('cors');
 // La constante app tendrá todo el funcionamiento del servidor
 const app = express();
 
-const mongoose = require('./database'); //Se requiere la conexión
+const {mongoose} = require('./database'); //Se requiere la conexión
 
 /* Se cre API REST, le decimos a servidor que reciba y envie datos*/
 
