@@ -31,7 +31,7 @@ desde cualquier origen. Esto es útil para permitir que aplicaciones frontend
 
  // rutas de nuestro servidor
 
- app.use('/api/empleados',require('./routes/empleado.rutes'));
+ app.use('/api/empleados',require('./routes/empleado.routes'));
  // Define la ruta para el recurso empleados
  /*Cuando una solicitud se hace a /api/empleados, se manejará por el módulo 
  empleado.routes. Este módulo debe contener las rutas específicas y los 
