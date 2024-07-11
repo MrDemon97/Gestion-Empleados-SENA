@@ -36,6 +36,11 @@ desde cualquier origen. Esto es útil para permitir que aplicaciones frontend
  /*Cuando una solicitud se hace a /api/empleados, se manejará por el módulo 
  empleado.routes. Este módulo debe contener las rutas específicas y los 
  controladores para manejar las operaciones CRUD relacionadas con empleados.*/
+ 
+ // Define la ruta para la raíz del servidor
+app.get('/', (req, res) => {
+    res.send('Bienvenido a la API de Gestión de Empleados');
+});
 
  app.listen(app.get('port'), () => { // inicia servidor en el puerto configurado
     console.log('server on port', app.get('port'));
