@@ -20,7 +20,7 @@ export class EmpleadoService {
    return this.http.get(this.URL_API);
   }
 
-  postEmpleado(Empleado:Empleado){
+  PostEmpleado(Empleado:Empleado){
     return this.http.post(this.URL_API, Empleado);
   }
 
