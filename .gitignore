@@ -1,2 +1,53 @@
 #Ignorar 
+# compiled output
+dist/
+out-tsc/
+build/
+
+# dependencies
 node_modules/
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin.json
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/
+
+# misc
+/.angular/cache
+.angular/
+
+# local environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# optional npm cache directory
+.npm
+
+# Angular specific files
+.angular/cache/
+.angular/cache/babel-webpack/
+
+# temporary files
+.tmp/
+temp/
