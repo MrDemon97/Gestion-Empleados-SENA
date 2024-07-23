@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
 import { EmpleadoService } from '../../services/empleado.service';
-
-import { NgForm } from '@angular/forms';
-
+import { FormsModule, NgForm } from '@angular/forms';
 import { Empleado } from '../../models/empleado';
+import { CommonModule } from '@angular/common';
 
 declare var M: any;
 
 @Component({
   selector: 'app-empleados',
-
+  standalone: true,
   templateUrl: './empleados.component.html',
-
   styleUrls: ['./empleados.component.css'],
-
-  providers: [EmpleadoService],
+  imports: [CommonModule, FormsModule]
 })
 export class EmpleadosComponent implements OnInit {
   constructor(public empleadoService: EmpleadoService) {}
@@ -28,7 +24,6 @@ export class EmpleadosComponent implements OnInit {
 
       .subscribe((res) => {
         this.resetForm(form);
-
         M.toast({ html: 'Guardado satisfactoriamente' });
       });
   }
@@ -38,7 +33,6 @@ export class EmpleadosComponent implements OnInit {
 
     if (form) {
       form.reset();
-
       this.empleadoService.selectedEmpleado = new Empleado();
     }
   }

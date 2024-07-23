@@ -1,69 +1,64 @@
 <div class="container">
+
   <div class="row">
+
     <div class="col s5">
+
       <div class="card">
+
         <div class="card-content">
-          <form
-            #empleadoForm="ngForm"
-            (ngSubmit)="agregarEmpleado(empleadoForm)"
-          >
+
+          <form #empleadoForm="ngForm" (ngSubmit)="agregarEmpleado(empleadoForm)">
+
             <div class="row">
-              <div class="input-field col-s12">
-                <input
-                  type="text"
-                  name="name"
-                  #name="ngModel"
-                  [(ngModel)]="empleadoService.selectedEmpleado.name"
-                  placeholder="Ingrese su nombre"
-                />
+
+              <div class="input-field col s12">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="empleadoService.selectedEmpleado.name"
+                  placeholder="Ingrese su nombre">
+                <label for="name">Nombre</label>
               </div>
 
-              <div class="input-field col-s12">
-                <input
-                  type="text"
-                  name="position"
-                  #position="ngModel"
-                  [(ngModel)]="empleadoService.selectedEmpleado.position"
-                  placeholder="Ingrese su cargo"
-                />
+              <div class="input-field col s12">
+                <input type="text" name="position" #position="ngModel"
+                  [(ngModel)]="empleadoService.selectedEmpleado.position" placeholder="Ingrese su cargo">
+                <label for="position">Cargo</label>
               </div>
 
-              <div class="input-field col-s12">
-                <input
-                  type="text"
-                  name="office"
-                  #office="ngModel"
-                  [(ngModel)]="empleadoService.selectedEmpleado.office"
-                  placeholder="Ingrese su lugar de trabajo"
-                />
+              <div class="input-field col s12">
+                <input type="text" name="office" #office="ngModel" [(ngModel)]="empleadoService.selectedEmpleado.office"
+                  placeholder="Ingrese su lugar de trabajo">
+                <label for="office">Lugar de Trabajo</label>
               </div>
 
-              <div class="input-field col-s12">
-                <input
-                  type="text"
-                  name="salary"
-                  #salary="ngModel"
-                  [(ngModel)
-                  ]="empleadoService.selectedEmpleado.salary"
-                  placeholder="Ingrese su salario"
-                />
+              <div class="input-field col s12">
+                <input type="text" name="salary" #salary="ngModel" [(ngModel)]="empleadoService.selectedEmpleado.salary"
+                  placeholder="Ingrese su salario">
+                <label for="salary">Salario</label>
               </div>
 
               <div class="card-action">
                 <div class="input-field col s12">
-                  <button class="btn right" (click)="resetForm(empleadoForm)">
-                    Limpiar
-                  </button>
-
-                  <button class="btn">Guardar</button>
+                  <button type="button" class="btn right" (click)="resetForm(empleadoForm)">Limpiar</button>
+                  <button type="submit" class="btn">Guardar</button>
                 </div>
               </div>
+
             </div>
+
           </form>
+
         </div>
+
       </div>
+
     </div>
 
-    <div class="col s7"></div>
+    <div class="col s7">
+
+      <!-- Aquí puedes agregar más contenido si es necesario -->
+
+    </div>
+
   </div>
+
 </div>

@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmpleadosComponent } from '../components/empleados/empleados.component';
 import { CommonModule } from '@angular/common';
+import { EmpleadosComponent } from '../components/empleados/empleados.component';
 
-import { AppRoutingRoutingModule } from './app-routing-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/empleados', pathMatch: 'full' },
-  { path: 'empleados', component: EmpleadosComponent },
-  // Puedes agregar más rutas aquí según necesites
+  { path: 'empleados', component: EmpleadosComponent },  
   { path: '**', redirectTo: '/empleados' } // Manejo de rutas no encontradas
 ];
 
@@ -16,7 +15,6 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    AppRoutingRoutingModule,
     RouterModule.forRoot(routes)
   ],
 
