@@ -10,5 +10,5 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Gestion de empleados';
 }
