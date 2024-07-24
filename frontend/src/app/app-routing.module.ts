@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { EmpleadosComponent } from '../components/empleados/empleados.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 //import { AppRoutingModule } from './app-routing.module';
 
