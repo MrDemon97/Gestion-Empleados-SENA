@@ -10,7 +10,7 @@ export class Empleado {
 
     }
 
-    _id: string; // Sub guión id porque los datos van a venir de MOngodb
+    _id: string;// Sub guión id porque los datos van a venir de MOngodb
 
     name: string;
     position: string;

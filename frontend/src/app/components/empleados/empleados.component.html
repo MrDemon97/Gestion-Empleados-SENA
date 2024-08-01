@@ -1,62 +1,95 @@
 <div class="container">
-
   <div class="row">
-
-    <div class="col s5">
-
+    <!-- Formulario para Crear o Editar Empleado -->
+    <div class="col s12 m6">
       <div class="card">
-
         <div class="card-content">
-
+          <!-- Mostrar título dinámico -->
+          <span class="card-title">{{ isEditing ? 'Actualizar Empleado' : 'Crear Empleado' }}</span>
           <form #empleadoForm="ngForm" (ngSubmit)="agregarEmpleado(empleadoForm)">
+            <!-- Campo oculto para el id del empleado -->
+            <input type="hidden" name="_id" [(ngModel)]="empleadoService.selectedEmpleado._id" />
 
             <div class="row">
-
               <div class="input-field col s12">
-                <input type="text" name="name" #name="ngModel" [(ngModel)]="empleadoService.selectedEmpleado.name"
-                  placeholder="Ingrese su nombre">
+                <input
+                  type="text"
+                  name="name"
+                  [(ngModel)]="empleadoService.selectedEmpleado.name"
+                  placeholder="Ingrese su nombre"
+                />
                 <label for="name">Nombre</label>
               </div>
 
               <div class="input-field col s12">
-                <input type="text" name="position" #position="ngModel"
-                  [(ngModel)]="empleadoService.selectedEmpleado.position" placeholder="Ingrese su cargo">
+                <input
+                  type="text"
+                  name="position"
+                  [(ngModel)]="empleadoService.selectedEmpleado.position"
+                  placeholder="Ingrese su cargo"
+                />
                 <label for="position">Cargo</label>
               </div>
 
               <div class="input-field col s12">
-                <input type="text" name="office" #office="ngModel" [(ngModel)]="empleadoService.selectedEmpleado.office"
-                  placeholder="Ingrese su lugar de trabajo">
+                <input
+                  type="text"
+                  name="office"
+                  [(ngModel)]="empleadoService.selectedEmpleado.office"
+                  placeholder="Ingrese su lugar de trabajo"
+                />
                 <label for="office">Lugar de Trabajo</label>
               </div>
 
               <div class="input-field col s12">
-                <input type="text" name="salary" #salary="ngModel" [(ngModel)]="empleadoService.selectedEmpleado.salary"
-                  placeholder="Ingrese su salario">
+                <input
+                  type="number"
+                  name="salary"
+                  [(ngModel)]="empleadoService.selectedEmpleado.salary"
+                  placeholder="Ingrese su salario"
+                />
                 <label for="salary">Salario</label>
               </div>
 
               <div class="card-action">
-                <div class="input-field col s12">
-                  <button type="button" class="btn right" (click)="resetForm(empleadoForm)">Limpiar</button>
-                  <button type="submit" class="btn">Guardar</button>
-                </div>
+                <button type="button" class="btn" (click)="resetForm(empleadoForm)">Limpiar</button>
+                <button type="submit" class="btn">Guardar</button>
               </div>
-
             </div>
-
           </form>
-
         </div>
-
       </div>
-
     </div>
 
-    <div class="col s7">
-
+    <!-- Lista de Empleados -->
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content">
+          <table class="highlight">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Posición</th>
+                <th>Oficina</th>
+                <th>Salario</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let empleado of empleados">
+                <td>{{ empleado.name }}</td>
+                <td>{{ empleado.position }}</td>
+                <td>{{ empleado.office }}</td>
+                <td>{{ empleado.salary }}</td>
+                <td>
+                  <button class="btn blue" (click)="editarEmpleado(empleado)">Editar</button>
+                  <button class="btn red" (click)="eliminarEmpleado(empleado._id)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-
   </div>
-
 </div>
