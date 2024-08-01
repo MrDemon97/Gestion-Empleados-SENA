@@ -56,19 +56,19 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: 'Error al actualizar empleado' });
+          M.toast({ html: error });
         }
       );
     } else {
       // Si estamos en modo creación
       this.empleadoService.postEmpleado(form?.value).subscribe(
         (res) => {
-          M.toast({ html: 'Empleado guardado satisfactoriamente' });
+          M.toast({ html: 'Empleado creado satisfactoriamente' });
           this.resetForm(form);
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: 'Error al guardar empleado' });
+          M.toast({ html: error });
         }
       );
     }
@@ -88,7 +88,7 @@ export class EmpleadosComponent implements OnInit {
         this.getEmpleados();
       },
       (error) => {
-        M.toast({ html: 'Error al eliminar empleado'});
+        M.toast({ html: error });
       }
     );
     }else{

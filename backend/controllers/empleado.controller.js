@@ -7,10 +7,17 @@ const Empleado = require('../models/empleado');
 const empleadoCtrl = {};
 
 //DEFINICION DE METODOS
+
 // Obtener todos los empleados
 empleadoCtrl.getEmpleados = async (req, res) => {
+  try{
     const empleados = await Empleado.find();
     res.json(empleados);
+
+  } catch (err){
+    res.status(500).json({error: 'Error del servidor al optener empleados'});
+  }
+
 }
 
 //Crear empleados
@@ -18,25 +25,33 @@ empleadoCtrl.createEmpleados = async (req, res) => {
     try {
       const { name, position, office, salary } = req.body;
       
-      // Verificar si ya existe un empleado con los mismos datos
-      const existingEmpleado = await Empleado.findOne({ name, position, office, salary });
+      // Verificar si ya existe un empleado con el mismo nombre y posicion existe 
+      const existingEmpleado = await Empleado.findOne({ name, position});
       if (existingEmpleado) {
-        return res.status(400).json({ 'error': 'Empleado con los mismos datos ya existe' });
+        return res.status(400).json({ error: 'Empleado con los mismos datos ya existe' });
       }
       
       const empleado = new Empleado(req.body);
       await empleado.save();
-      res.json({ 'status': 'Empleado GUARDADO' });
+      res.json({ status: 'Empleado craeado con exito'});
     } catch (err) {
-      res.status(400).json({ 'error': err.message });
+      res.status(500).json({ error: 'Error del servidor al guardar empleado' });
     }
   };
 
-//Conseguir un unico empleado
+// Conseguir un único empleado
 empleadoCtrl.getUnicoEmpleado = async (req, res) => {
-    const empleadoUnico = await Empleado.findById(req.params.id);
-    res.json(empleadoUnico);
-}
+  try {
+      const empleadoUnico = await Empleado.findById(req.params.id);
+      if (!empleadoUnico) {
+          return res.status(404).json({ error: 'Empleado no encontrado' });
+      }
+      // Si el empleado es encontrado devolvemos todos los datos del empleado
+      res.json(empleadoUnico);
+  } catch (err) {
+      res.status(500).json({ error: 'Error del servidor al obtener empleado' });
+  }
+};
 
 //Actualizar empleado
 empleadoCtrl.editarEmpleado = async (req, res) => {
@@ -44,8 +59,8 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
       const { id } = req.params;
       const { name, position, office, salary } = req.body;
 
-      // Verificar si ya existe un empleado con los mismos datos, excluyendo el empleado actual
-      const existingEmpleado = await Empleado.findOne({ name, position, office, salary });
+      // Verificar si ya existe un empleado con los mismos datos nombre y posición, excluyendo el empleado actual
+      const existingEmpleado = await Empleado.findOne({ name, position});
       if (existingEmpleado && existingEmpleado._id.toString() !== id) {
           return res.status(400).json({ error: 'Empleado con los mismos datos ya existe' });
       }
@@ -58,9 +73,9 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
           return res.status(404).json({ error: 'Empleado no encontrado' });
       }
 
-      res.json({ status: 'Empleado actualizado', empleado: updatedEmpleado });
+      res.json({ status: 'Empleado actualizado con exito', empleado: updatedEmpleado });
   } catch (err) {
-      res.status(400).json({ error: err.message });
+      res.status(500).json({ error: 'Error del servidor actualizando empleado'});
   }
 };
 ;
@@ -68,9 +83,18 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
 
 //Eliminar empleado
 empleadoCtrl.eliminarEmpleado = async (req, res) => {
-    await Empleado.findByIdAndDelete(req.params.id);
-    res.json({'status': 'Empleado ELIMINADO'});
-    }
+  try {
+    //Buscamos el empleado por su id y lo eliminamos 
+      const empleadoEliminado = await Empleado.findByIdAndDelete(req.params.id);
+      if (!empleadoEliminado) {
+          return res.status(404).json({ error: 'Empleado no encontrado' });
+      }
+      res.json({ status: 'Empleado eliminado con éxito' });
+  } catch (err) {
+      res.status(500).json({ error: 'Error del servidor al eliminar empleado' });
+  }
+};
+
 
 // exportando modulo
 
