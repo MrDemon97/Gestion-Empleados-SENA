@@ -16,6 +16,7 @@ empleadoCtrl.getEmpleados = async (req, res) => {
 
   } catch (err){
     res.status(500).json({error: 'Error del servidor al optener empleados'});
+    console.error('Error del servidor al optener empleados');
   }
 
 }
@@ -24,18 +25,26 @@ empleadoCtrl.getEmpleados = async (req, res) => {
 empleadoCtrl.createEmpleados = async (req, res) => {
     try {
       const { name, position, office, salary } = req.body;
+
+      // Verificar que todos los campos requeridos estén presentes
+      if (!name || !position || !office || salary == null) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+    }
       
       // Verificar si ya existe un empleado con el mismo nombre y posicion existe 
       const existingEmpleado = await Empleado.findOne({ name, position});
       if (existingEmpleado) {
-        return res.status(400).json({ error: 'Empleado con los mismos datos ya existe' });
+        return res.status(400).json({ error:'Empleado con los mismos datos ya existe' });
       }
       
       const empleado = new Empleado(req.body);
       await empleado.save();
       res.json({ status: 'Empleado craeado con exito'});
+
     } catch (err) {
+      console.error('Error del servidor al crear empleado');
       res.status(500).json({ error: 'Error del servidor al guardar empleado' });
+      
     }
   };
 
@@ -49,6 +58,7 @@ empleadoCtrl.getUnicoEmpleado = async (req, res) => {
       // Si el empleado es encontrado devolvemos todos los datos del empleado
       res.json(empleadoUnico);
   } catch (err) {
+      console.error('Error del servidor al obtener empleado');
       res.status(500).json({ error: 'Error del servidor al obtener empleado' });
   }
 };
@@ -75,6 +85,7 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
 
       res.json({ status: 'Empleado actualizado con exito', empleado: updatedEmpleado });
   } catch (err) {
+      console.log('Error del servidor actualizando empleado');
       res.status(500).json({ error: 'Error del servidor actualizando empleado'});
   }
 };
@@ -91,6 +102,7 @@ empleadoCtrl.eliminarEmpleado = async (req, res) => {
       }
       res.json({ status: 'Empleado eliminado con éxito' });
   } catch (err) {
+      console.log('Error del servidor al eliminar empleado');
       res.status(500).json({ error: 'Error del servidor al eliminar empleado' });
   }
 };

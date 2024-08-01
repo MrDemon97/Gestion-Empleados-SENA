@@ -11,28 +11,29 @@ declare var M: any;
   standalone: true,
   templateUrl: './empleados.component.html',
   styleUrls: ['./empleados.component.css'],
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule],
 })
 export class EmpleadosComponent implements OnInit {
   empleados: Empleado[] = [];
   //creamos un bollean que me permite saber si estoy editando o creando
   isEditing: boolean = false;
-  
-  constructor(public empleadoService: EmpleadoService) {}
+
+  constructor(public empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
     this.resetForm();
     this.getEmpleados();
   }
 
-  getEmpleados(){
-    this.empleadoService.getEmpleados().subscribe((data: any) => {
-      this.empleados = data;;
-    },
-    (error) => {
-      M.toast({ html: 'Error al cargar empleados'});
-    }
-   );
+  getEmpleados() {
+    this.empleadoService.getEmpleados().subscribe(
+      (data: any) => {
+        this.empleados = data;
+      },
+      (error) => {
+        M.toast({ html: 'Error al cargar empleados' });
+      }
+    );
   }
 
   agregarEmpleado(form?: NgForm) {
@@ -41,11 +42,27 @@ export class EmpleadosComponent implements OnInit {
       return;
     }
 
+    const { name, position, office, salary } = form?.value;
+
+    // Verifica si alguno de los campos obligatorios está vacío
+    if (!name.trim() || !position.trim() || !office.trim()) {
+      M.toast({ html: 'Todos los campos deben estar llenos' });
+      return;
+    }
+
+    // Verifica si el salario es cero
+    if (salary <= 0) {
+      M.toast({ html: 'El salario debe ser mayor a cero' });
+      return;
+    }
+
     // Verifica si estamos en modo edición
     if (this.isEditing) {
       // Si estamos en modo edición, aseguramos que el _id esté presente
       if (!form?.value._id) {
-        M.toast({ html: 'Error: El ID del empleado es necesario para la actualización' });
+        M.toast({
+          html: 'Error: El ID del empleado es necesario para la actualización',
+        });
         return;
       }
 
@@ -56,7 +73,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: error });
+          M.toast({ html: 'Error al actualizar empleado' });
         }
       );
     } else {
@@ -68,31 +85,32 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: error });
+          M.toast({ html: 'Error al crear empleado' });
         }
       );
     }
   }
 
   editarEmpleado(empleado: Empleado) {
-    this.empleadoService.selectedEmpleado = {...empleado};
+    this.empleadoService.selectedEmpleado = { ...empleado };
     this.isEditing = true;
-     // Desplazar hacia el formulario
-     document.querySelector('.card')?.scrollIntoView({ behavior: 'smooth' });
+    // Desplazar hacia el formulario
+    document.querySelector('.card')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   eliminarEmpleado(_id: string) {
-    if(confirm('¿Esta seguro de que desea eliminar este empleado?')) {
-      this.empleadoService.deleteEmpleado(_id).subscribe((res) => {
-        M.toast({ html: 'Empleado eliminado con exito'});
-        this.getEmpleados();
-      },
-      (error) => {
-        M.toast({ html: error });
-      }
-    );
-    }else{
-      M.toast({ html: 'Eliminacion Cancelada'});
+    if (confirm('¿Esta seguro de que desea eliminar este empleado?')) {
+      this.empleadoService.deleteEmpleado(_id).subscribe(
+        (res) => {
+          M.toast({ html: 'Empleado eliminado con exito' });
+          this.getEmpleados();
+        },
+        (error) => {
+          M.toast({ html: 'Error al eliminar empleado' });
+        }
+      );
+    } else {
+      M.toast({ html: 'Eliminacion Cancelada' });
       this.getEmpleados();
     }
   }
@@ -103,7 +121,7 @@ export class EmpleadosComponent implements OnInit {
     if (form) {
       form.reset();
       this.empleadoService.selectedEmpleado = new Empleado();
-      this.isEditing=false;
+      this.isEditing = false;
     }
   }
 }
