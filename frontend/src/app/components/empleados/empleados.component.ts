@@ -42,15 +42,17 @@ export class EmpleadosComponent implements OnInit {
   }
 
   agregarEmpleado(form?: NgForm) {
+    // Si el formulario es no valido 
     if (!form?.valid) {
       M.toast({ html: 'Todos los campos son requeridos' });
       return;
     }
-
+    // Deconstruccion  [Extraer los valores de un objeto y asignarlos a varaibles individuales]
     const { name, position, office, salary } = form?.value;
 
     // Verifica si alguno de los campos obligatorios está vacío
     if (!name.trim() || !position.trim() || !office.trim()) {
+      //trim elimina los espacios en blanco al principio y al final de una cadena de texto
       M.toast({ html: 'Todos los campos deben estar llenos' });
       return;
     }
