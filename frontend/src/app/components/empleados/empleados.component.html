@@ -7,9 +7,7 @@
           <!-- Mostrar título dinámico -->
           <span class="card-title">{{ isEditing ? 'Actualizar Empleado' : 'Crear Empleado' }}</span>
           <form #empleadoForm="ngForm" (ngSubmit)="agregarEmpleado(empleadoForm)">
-            <!-- Campo oculto para el id del empleado -->
-            <input type="hidden" name="_id" [(ngModel)]="empleadoService.selectedEmpleado._id" />
-
+       
             <div class="row">
               <div class="input-field col s12">
                 <input

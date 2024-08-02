@@ -15,8 +15,8 @@ empleadoCtrl.getEmpleados = async (req, res) => {
     res.json(empleados);
 
   } catch (err){
-    res.status(500).json({error: 'Error del servidor al optener empleados'});
     console.error('Error del servidor al optener empleados');
+    res.status(500).json({error: 'Error del servidor al optener empleados'});
   }
 
 }
@@ -27,13 +27,15 @@ empleadoCtrl.createEmpleados = async (req, res) => {
       const { name, position, office, salary } = req.body;
 
       // Verificar que todos los campos requeridos estén presentes
-      if (!name || !position || !office || salary == null) {
+      /* if (!name || !position || !office || salary == null) {
+        console.error('Todos los campos son requeridos');
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
-    }
+    } */
       
       // Verificar si ya existe un empleado con el mismo nombre y posicion existe 
-      const existingEmpleado = await Empleado.findOne({ name, position});
+      const existingEmpleado = await Empleado.findOne({ name, position, office, salary});
       if (existingEmpleado) {
+        console.error('Empleado con los mismos datos ya existe');
         return res.status(400).json({ error:'Empleado con los mismos datos ya existe' });
       }
       
@@ -43,7 +45,7 @@ empleadoCtrl.createEmpleados = async (req, res) => {
 
     } catch (err) {
       console.error('Error del servidor al crear empleado');
-      res.status(500).json({ error: 'Error del servidor al guardar empleado' });
+      res.status(500).json({ error: 'Error del servidor al crear empleado' });
       
     }
   };
@@ -53,6 +55,7 @@ empleadoCtrl.getUnicoEmpleado = async (req, res) => {
   try {
       const empleadoUnico = await Empleado.findById(req.params.id);
       if (!empleadoUnico) {
+          console.error('Empleado no encontrado');
           return res.status(404).json({ error: 'Empleado no encontrado' });
       }
       // Si el empleado es encontrado devolvemos todos los datos del empleado
@@ -72,7 +75,8 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
       // Verificar si ya existe un empleado con los mismos datos nombre y posición, excluyendo el empleado actual
       const existingEmpleado = await Empleado.findOne({ name, position});
       if (existingEmpleado && existingEmpleado._id.toString() !== id) {
-          return res.status(400).json({ error: 'Empleado con los mismos datos ya existe' });
+        console.error('Empleado ya existe');
+        return res.status(400).json({ error: 'Empleado con los mismos datos ya existe' });
       }
 
       const empleadoEdit = { name, position, office, salary };
@@ -80,6 +84,7 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
 
       // Si no se encuentra un empleado con el id proporcionado, devuelve un error 404
       if (!updatedEmpleado) {
+          console.err('Empleado no encontrado');
           return res.status(404).json({ error: 'Empleado no encontrado' });
       }
 

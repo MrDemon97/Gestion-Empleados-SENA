@@ -21,8 +21,8 @@ export class EmpleadoService {
     return this.http.get(this.URL_API);
   }
 
-  postEmpleado(Empleado: Empleado) {
-    return this.http.post(this.URL_API, Empleado);
+  postEmpleado(empleado: Empleado) {
+    return this.http.post(this.URL_API, empleado);
   }
 
   putEmpleado(empleado: Empleado): Observable<any> {

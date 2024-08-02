@@ -15,12 +15,17 @@ declare var M: any;
 })
 export class EmpleadosComponent implements OnInit {
   empleados: Empleado[] = [];
+
   //creamos un bollean que me permite saber si estoy editando o creando
   isEditing: boolean = false;
+
+  //Ccreamos una variable para almacenar el id del empleado a editar
+  selectedEmpleadoId: string | null = null;
 
   constructor(public empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
+    // Al inicar reseteamos el formulario y optenemos los datos de empleados
     this.resetForm();
     this.getEmpleados();
   }
@@ -55,18 +60,22 @@ export class EmpleadosComponent implements OnInit {
       M.toast({ html: 'El salario debe ser mayor a cero' });
       return;
     }
+    console.log('Datos del formulario', form?.value)
 
     // Verifica si estamos en modo edición
     if (this.isEditing) {
       // Si estamos en modo edición, aseguramos que el _id esté presente
-      if (!form?.value._id) {
+      if (!this.selectedEmpleadoId) {
         M.toast({
           html: 'Error: El ID del empleado es necesario para la actualización',
         });
         return;
       }
 
-      this.empleadoService.putEmpleado(form?.value).subscribe(
+      //Crea un objeto con el id del empleado a editar y los datos del formulario
+      const empleadoData: Empleado = {_id: this.selectedEmpleadoId, ...form?.value}
+
+      this.empleadoService.putEmpleado(empleadoData).subscribe(
         (res) => {
           M.toast({ html: 'Empleado actualizado con éxito' });
           this.resetForm(form);
@@ -94,6 +103,10 @@ export class EmpleadosComponent implements OnInit {
   editarEmpleado(empleado: Empleado) {
     this.empleadoService.selectedEmpleado = { ...empleado };
     this.isEditing = true;
+    
+    // Guarda el id del empleadoa editar
+    this.selectedEmpleadoId = empleado._id;
+    
     // Desplazar hacia el formulario
     document.querySelector('.card')?.scrollIntoView({ behavior: 'smooth' });
   }
@@ -121,6 +134,7 @@ export class EmpleadosComponent implements OnInit {
     if (form) {
       form.reset();
       this.empleadoService.selectedEmpleado = new Empleado();
+      this.selectedEmpleadoId = null; // Reestablesemos el guardador de ids
       this.isEditing = false;
     }
   }
