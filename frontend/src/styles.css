@@ -1,4 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
-/* .row .col.s5 {
+ /* Estilo para el fondo con la imagen distorsionada y oscurecida */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('https://images.unsplash.com/photo-1712397943847-e104395a1a8b?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    background-size: cover;
+    filter: brightness(50%); /* Solo oscurece, sin desenfoque */
+  }
+  
+  /* Estilo para el contenedor principal */
+  .container {
+    position: relative;
+    /*!background: rgba(255, 255, 255, 0.2); /* Color blanco con opacidad para el efecto cristal claro */
+    backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
+    border-radius: 10px; /* Opcional: para bordes redondeados */
+    padding: 20px;
+  }
+  
+  /* Estilo para las tarjetas */
+  .card {
+    background: rgba(255, 255, 255, 0.9); /* Color blanco con mayor opacidad */
+    backdrop-filter: blur(1px); /* Desenfoque de fondo para el efecto cristal */
+    border-radius: 10px; /* Opcional: para bordes redondeados */
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para la barra de navegación */
+  nav {
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
+    backdrop-filter: blur(4px); /* Efecto cristal claro, leve */
+  }
+  
+  /* Estilo para el footer */
+  footer {
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
+    backdrop-filter: blur(4px); /* Efecto cristal claro, leve */
+    padding: 10px;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Estilo para los botones */
+  .btn {
+    width: 8.5em;
+    max-width: 90px;
+    min-width: 90px;
+    margin: 2px;
+  }
+  
+  /* Asegura que el contenedor tenga el ancho completo de la página */
+  .container {
     width: 100%;
-} */
+    max-width: 1200px; /* O el ancho máximo que prefieras */
+    margin: 0 auto;
+  }
+  
+  /* Asegura que las tarjetas se alineen correctamente */
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  /* Asegura que los campos de entrada se ajusten al ancho del contenedor */
+  .input-field input {
+    width: 100%;
+  }
+  

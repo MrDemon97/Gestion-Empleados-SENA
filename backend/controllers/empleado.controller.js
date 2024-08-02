@@ -32,7 +32,8 @@ empleadoCtrl.createEmpleados = async (req, res) => {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     } */
       
-      // Verificar si ya existe un empleado con el mismo nombre y posicion existe 
+      //? Verificar si ya existe un empleado con el mismo nombre y posicion existe 
+      
       const existingEmpleado = await Empleado.findOne({ name, position, office, salary});
       if (existingEmpleado) {
         console.error('Empleado con los mismos datos ya existe');

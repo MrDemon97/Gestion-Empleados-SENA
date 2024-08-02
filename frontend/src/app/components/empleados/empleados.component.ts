@@ -50,16 +50,20 @@ export class EmpleadosComponent implements OnInit {
     // Deconstruccion  [Extraer los valores de un objeto y asignarlos a varaibles individuales]
     const { name, position, office, salary } = form?.value;
 
-    // Verifica si alguno de los campos obligatorios está vacío
-    if (!name.trim() || !position.trim() || !office.trim()) {
-      //trim elimina los espacios en blanco al principio y al final de una cadena de texto
-      M.toast({ html: 'Todos los campos deben estar llenos' });
+    //! Revisamos en el formulario si salario es null  o que no sea menor a 0
+
+    if (salary == null){
+      M.toast({ html: 'Salario no puede estar vacio' });
+      return;
+    }else if (salary <= 0){
+      M.toast({ html: 'El salario debe ser mayor a 0' });
       return;
     }
 
-    // Verifica si el salario es cero
-    if (salary <= 0) {
-      M.toast({ html: 'El salario debe ser mayor a cero' });
+    // Verifica si alguno de los campos obligatorios está vacío
+    if (!name.trim() || !position.trim() || !office.trim())  {
+      //trim elimina los espacios en blanco al principio y al final de una cadena de texto
+      M.toast({ html: 'Todos los campos deben estar llenos' });
       return;
     }
     console.log('Datos del formulario', form?.value)
@@ -136,6 +140,8 @@ export class EmpleadosComponent implements OnInit {
     if (form) {
       form.reset();
       this.empleadoService.selectedEmpleado = new Empleado();
+      //No aseguramos de que el limpiar el formulario se añada un 0 a salario y no se convierta en 
+      //indefinido
       this.selectedEmpleadoId = null; // Reestablesemos el guardador de ids
       this.isEditing = false;
     }
