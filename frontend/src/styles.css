@@ -1,3 +1,4 @@
+
  /* Estilo para el fondo con la imagen distorsionada y oscurecida */
 body {
     margin: 0;
@@ -10,7 +11,6 @@ body {
   /* Estilo para el contenedor principal */
   .container {
     position: relative;
-    /*!background: rgba(255, 255, 255, 0.2); /* Color blanco con opacidad para el efecto cristal claro */
     backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
     border-radius: 10px; /* Opcional: para bordes redondeados */
     padding: 20px;
@@ -18,8 +18,8 @@ body {
   
   /* Estilo para las tarjetas */
   .card {
-    background: rgba(255, 255, 255, 0.9); /* Color blanco con mayor opacidad */
-    backdrop-filter: blur(1px); /* Desenfoque de fondo para el efecto cristal */
+    background: rgba(255, 255, 255, 0.8); /* Color blanco con mayor opacidad */
+    backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
     border-radius: 10px; /* Opcional: para bordes redondeados */
     padding: 20px;
     margin-bottom: 20px;
@@ -64,4 +64,10 @@ body {
   .input-field input {
     width: 100%;
   }
+
+  input::placeholder{
+    color:darkcyan;
+  }
+  
+ 
   
