@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
+const {Schema} = mongoose; //Destructura el objeto schemma de mongoose para definir el esquema del modelo 
 
 const EmpleadoSchema = new Schema({
     name:{type: String, require: true},
@@ -8,6 +8,7 @@ const EmpleadoSchema = new Schema({
     salary:{type: Number, require: true},
 });
 
+// Exporta el modelo de empleado basado en el modelo definido
 module.exports = mongoose.model('Empleado', EmpleadoSchema);
 
 /*¿Qué hace este código?

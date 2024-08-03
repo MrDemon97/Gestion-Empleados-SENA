@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 @NgModule({
-    declarations: [ 
-        AppComponent,
+    declarations: [
+        // Declara los componentes que pertenecen a este modulo
+        AppComponent, // Coponente raiz de la aplicación
         EmpleadosComponent
     ],
 
     imports: [
+        //importa los modulos que este módulo necesita
         BrowserModule,
         AppRoutingModule,
         FormsModule,
@@ -21,7 +23,7 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
     ],
 
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent] // Define el componente raiz que se cargará al iniciar la app
 
 })
 

@@ -43,6 +43,6 @@ app.get('/', (req, res) => {
 });
 
  app.listen(app.get('port'), () => { // inicia servidor en el puerto configurado
-    console.log('server on port', app.get('port'));
+    console.log('Servidor Corriendo en puerto', app.get('port'));
     //imprime mensaje en la consola
  })

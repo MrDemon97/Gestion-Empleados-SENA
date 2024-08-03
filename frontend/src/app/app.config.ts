@@ -15,13 +15,14 @@ export const appConfig: ApplicationConfig = {
 
 import { importProvidersFrom } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; // Asegúrate de importar esto
+import { HttpClientModule } from '@angular/common/http'; 
 import { RouterModule } from '@angular/router';
-import { routes } from './app-routing.module';
+import { routes } from './app-routing.module'; // Enlace modificado a las rutas
 
 export const appConfig = {
   providers: [
     importProvidersFrom(
+      //Configura los proveedores necesarios para la aplicacion
       BrowserModule,
       HttpClientModule,
       RouterModule.forRoot(routes)

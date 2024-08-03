@@ -5,7 +5,7 @@ body {
     padding: 0;
     background: url('https://images.unsplash.com/photo-1712397943847-e104395a1a8b?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
     background-size: cover;
-    filter: brightness(50%); /* Solo oscurece, sin desenfoque */
+    filter: brightness(65%); /* Solo oscurece, sin desenfoque */
   }
   
   /* Estilo para el contenedor principal */
@@ -64,7 +64,7 @@ body {
   .input-field input {
     width: 100%;
   }
-
+  /* Cambia el color del texto del placeholder */
   input::placeholder{
     color:darkcyan;
   }

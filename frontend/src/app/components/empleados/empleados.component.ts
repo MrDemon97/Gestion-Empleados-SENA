@@ -31,6 +31,7 @@ export class EmpleadosComponent implements OnInit {
   }
 
   getEmpleados() {
+    //! Subscribirse al observabke devuelto por getEmpleados
     this.empleadoService.getEmpleados().subscribe(
       (data: any) => {
         this.empleados = data;

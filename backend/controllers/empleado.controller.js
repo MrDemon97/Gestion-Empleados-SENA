@@ -1,18 +1,18 @@
 /**
-* Se coloca el controlador como un objeto y luego se exporta como
+* Se coloca el controlador como un objeto y luego se exporta
 * se requiere primero el modelo empleado
 */
 
 const Empleado = require('../models/empleado');
-const empleadoCtrl = {};
+const empleadoCtrl = {}; //? Crea objeto para definir metodos del controlador
 
 //DEFINICION DE METODOS
 
 // Obtener todos los empleados
 empleadoCtrl.getEmpleados = async (req, res) => {
   try{
-    const empleados = await Empleado.find();
-    res.json(empleados);
+    const empleados = await Empleado.find(); // Busca todos los empleado en la base de datos
+    res.json(empleados); //Devuelve la lista de empleados en formato Json
 
   } catch (err){
     console.error('Error del servidor al optener empleados');
@@ -24,6 +24,8 @@ empleadoCtrl.getEmpleados = async (req, res) => {
 //Crear empleados
 empleadoCtrl.createEmpleados = async (req, res) => {
     try {
+    
+      //? Se extrae los datos del cuerpo de la solicitud
       const { name, position, office, salary } = req.body;
 
       // Verificar que todos los campos requeridos estén presentes
@@ -32,15 +34,18 @@ empleadoCtrl.createEmpleados = async (req, res) => {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     } */
       
-      //? Verificar si ya existe un empleado con el mismo nombre y posicion existe 
-      
+      //? Verificar si ya existe un empleado con el mismo nombre y posicion
+
       const existingEmpleado = await Empleado.findOne({ name, position, office, salary});
       if (existingEmpleado) {
         console.error('Empleado con los mismos datos ya existe');
         return res.status(400).json({ error:'Empleado con los mismos datos ya existe' });
       }
       
-      const empleado = new Empleado(req.body);
+      // Crea nueva instancia con datos proporcionados
+      const empleado = new Empleado(req.body); 
+      
+      // Guarda el nuevo empleado en la base de daos
       await empleado.save();
       res.json({ status: 'Empleado craeado con exito'});
 
