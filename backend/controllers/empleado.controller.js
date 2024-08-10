@@ -35,7 +35,8 @@ empleadoCtrl.createEmpleados = async (req, res) => {
     } */
       
       //? Verificar si ya existe un empleado con el mismo nombre y posicion
-
+      //todo Implementar manejo de errores en el front end
+      
       const existingEmpleado = await Empleado.findOne({ name, position});
       if (existingEmpleado) {
         console.error('Empleado con los mismos datos ya existe');
