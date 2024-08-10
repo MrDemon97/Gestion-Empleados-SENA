@@ -119,7 +119,7 @@ POST http://localhost:3000/api/empleados
 
 ## PRUEBAS PARA PUT
 
-###PUT /empleados/
+### PUT /empleados/
 
 **Petición:**
 
