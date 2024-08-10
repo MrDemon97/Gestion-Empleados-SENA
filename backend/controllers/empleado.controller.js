@@ -36,7 +36,7 @@ empleadoCtrl.createEmpleados = async (req, res) => {
       
       //? Verificar si ya existe un empleado con el mismo nombre y posicion
 
-      const existingEmpleado = await Empleado.findOne({ name, position, office, salary});
+      const existingEmpleado = await Empleado.findOne({ name, position});
       if (existingEmpleado) {
         console.error('Empleado con los mismos datos ya existe');
         return res.status(400).json({ error:'Empleado con los mismos datos ya existe' });
@@ -47,6 +47,7 @@ empleadoCtrl.createEmpleados = async (req, res) => {
       
       // Guarda el nuevo empleado en la base de daos
       await empleado.save();
+      console.log(empleado);
       res.json({ status: 'Empleado craeado con exito'});
 
     } catch (err) {
