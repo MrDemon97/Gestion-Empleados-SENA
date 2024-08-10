@@ -29,10 +29,10 @@ empleadoCtrl.createEmpleados = async (req, res) => {
       const { name, position, office, salary } = req.body;
 
       // Verificar que todos los campos requeridos estén presentes
-      /* if (!name || !position || !office || salary == null) {
+       if (!name || !position || !office || salary == null) {
         console.error('Todos los campos son requeridos');
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
-    } */
+      }
       
       //? Verificar si ya existe un empleado con el mismo nombre y posicion
       
