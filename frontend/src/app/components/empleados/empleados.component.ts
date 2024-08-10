@@ -19,7 +19,7 @@ export class EmpleadosComponent implements OnInit {
   //creamos un bollean que me permite saber si estoy editando o creando
   isEditing: boolean = false;
 
-  //Ccreamos una variable para almacenar el id del empleado a editar
+  //Creamos una variable para almacenar el id del empleado a editar
   selectedEmpleadoId: string | null = null;
 
   constructor(public empleadoService: EmpleadoService) { }
@@ -37,7 +37,7 @@ export class EmpleadosComponent implements OnInit {
         this.empleados = data;
       },
       (error) => {
-        M.toast({ html: 'Error al cargar empleados' });
+        M.toast({ html: error.message });
       }
     );
   }
@@ -67,7 +67,7 @@ export class EmpleadosComponent implements OnInit {
       M.toast({ html: 'Todos los campos deben estar llenos' });
       return;
     }
-    console.log('Datos del formulario', form?.value)
+    //console.log('Datos del formulario', form?.value)
 
     // Verifica si estamos en modo edición
     if (this.isEditing) {
@@ -89,7 +89,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: 'Error al actualizar empleado' });
+          M.toast({ html: error.message  });
         }
       );
     } else {
@@ -101,7 +101,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: 'Error al crear empleado' });
+          M.toast({ html: error.message  });
         }
       );
     }
@@ -126,7 +126,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: 'Error al eliminar empleado' });
+          M.toast({ html: error.message  });
         }
       );
     } else {
