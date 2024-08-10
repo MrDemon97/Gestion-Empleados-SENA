@@ -18,7 +18,7 @@ body {
   
   /* Estilo para las tarjetas */
   .card {
-    background: rgba(255, 255, 255, 0.8); /* Color blanco con mayor opacidad */
+    background: rgba(255, 255, 255, 88%); /* Color blanco con mayor opacidad */
     backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
     border-radius: 10px; /* Opcional: para bordes redondeados */
     padding: 20px;
