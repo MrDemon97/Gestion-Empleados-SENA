@@ -92,8 +92,8 @@ export class EmpleadosComponent implements OnInit {
 
     //! Revisamos en el formulario si salario es null  o que no sea menor a 0
 
-    if (salary == null){
-      M.toast({ html: 'Salario no puede estar vacio' });
+    if (salary == null || name == null || position == null || office == null){
+      M.toast({ html: '¡Ningún campo puede estar vacio!' });
       return;
     }else if (salary <= 0){
       M.toast({ html: 'El salario debe ser mayor a 0' });
