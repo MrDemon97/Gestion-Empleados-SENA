@@ -95,6 +95,7 @@ body {
 /* Aumenta la escala del texto al pasar el ratón */
 .orderOption:hover {
   transform: scale(1.05);
+  color:darkcyan;
 }
 
 /* Muestra un texto de ayuda al pasar el ratón */
@@ -106,7 +107,7 @@ body {
   right: 0;
   text-align: center;
   font-size: 0.8rem;
-  color: #a2dd19;
+  color: darkorange;
   background-color: black;
   opacity: 0;
   transition: opacity 0.3s ease;
