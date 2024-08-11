@@ -35,11 +35,19 @@ export class EmpleadosComponent implements OnInit {
     this.empleadoService.getEmpleados().subscribe(
       (data: any) => {
         this.empleados = data;
+        this.ordenarEmpleados(); // Ordenamos empleados por nombre
       },
       (error) => {
         M.toast({ html: error.message });
       }
     );
+  }
+
+  ordenarEmpleados(){
+    this.empleados.sort((a, b) => {
+      // Ordenar por la primera letra del nommbre en orden alfabetico
+      return a.name.localeCompare(b.name); 
+    });
   }
 
   agregarEmpleado(form?: NgForm) {
@@ -67,7 +75,7 @@ export class EmpleadosComponent implements OnInit {
       M.toast({ html: 'Todos los campos deben estar llenos' });
       return;
     }
-    //console.log('Datos del formulario', form?.value)
+    console.log('Datos del formulario', form?.value)
 
     // Verifica si estamos en modo edición
     if (this.isEditing) {
@@ -89,7 +97,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: error.message  });
+          M.toast({ html: error.message });
         }
       );
     } else {
@@ -101,7 +109,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: error.message  });
+          M.toast({ html: error.message });
         }
       );
     }
@@ -126,7 +134,7 @@ export class EmpleadosComponent implements OnInit {
           this.getEmpleados();
         },
         (error) => {
-          M.toast({ html: error.message  });
+          M.toast({ html: error.message });
         }
       );
     } else {

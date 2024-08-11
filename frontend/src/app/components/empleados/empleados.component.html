@@ -76,11 +76,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let empleado of empleados">
-                <td>{{ empleado.name }}</td>
-                <td>{{ empleado.position }}</td>
-                <td>{{ empleado.office }}</td>
-                <td>{{ empleado.salary }}</td>
-                <td>
+                <td class="tableList nameList">{{ empleado.name }}</td>
+                <td class="tableList positionList">{{ empleado.position }}</td>
+                <td class="tableList officeList">{{ empleado.office }}</td>
+                <td class="tableList salaryList">{{ empleado.salary }}</td>
+                <td class="tableList butonList">
                   <button class="btn blue" (click)="editarEmpleado(empleado)">Editar</button>
                   <button class="btn red" (click)="eliminarEmpleado(empleado._id)">Eliminar</button>
                 </td>

@@ -41,11 +41,10 @@ body {
   }
   
   /* Estilo para los botones */
-  .btn {
-    width: 8.5em;
-    max-width: 90px;
-    min-width: 90px;
-    margin: 2px;
+  .btn, .btn-large, .btn-small, .btn-flat {
+    height: 30px;
+    padding: 0;
+    line-height: 0px;
   }
   
   /* Asegura que el contenedor tenga el ancho completo de la página */
@@ -68,6 +67,29 @@ body {
   input::placeholder{
     color:darkcyan;
   }
-  
+
+  /* Estilos para la tabla*/
+  td.salaryList {
+    text-align: end;
+  }
+
+  td.officeList, td.positionList{
+    text-align: center;
+  }
+
+  td.nameList{
+    text-align: right;
+  }
+
+  th{
+    text-align: center;
+  }
+
+  .butonList {
+    text-align: center;
+  }
+
+
+
  
   
