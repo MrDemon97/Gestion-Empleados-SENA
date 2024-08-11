@@ -67,11 +67,11 @@
           <table class="highlight">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Posición</th>
-                <th>Oficina</th>
-                <th>Salario</th>
-                <th>Acciones</th>
+                <th class = "orderOption" (click)="sortEmpleados('name')">Nombre</th>
+                <th class = "orderOption" (click)="sortEmpleados('position')">Cargo</th>
+                <th class = "orderOption" (click)="sortEmpleados('office')">Oficina</th>
+                <th class = "orderOption" (click)="sortEmpleados('salary')">Salario</th>
+                <th> Acciones </th>
               </tr>
             </thead>
             <tbody>

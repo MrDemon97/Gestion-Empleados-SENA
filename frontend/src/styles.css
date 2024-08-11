@@ -85,6 +85,38 @@ body {
     text-align: center;
   }
 
+  /* Cambia el cursor al pasar sobre los encabezados de columna */
+.orderOption {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Aumenta la escala del texto al pasar el ratón */
+.orderOption:hover {
+  transform: scale(1.05);
+}
+
+/* Muestra un texto de ayuda al pasar el ratón */
+.orderOption::after {
+  content: 'Ordenar por';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #a2dd19;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Muestra el texto de ayuda cuando el ratón está sobre el encabezado */
+.orderOption:hover::after {
+  opacity: 1;
+}
+
   .butonList {
     text-align: center;
   }

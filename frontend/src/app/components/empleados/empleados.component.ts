@@ -22,6 +22,11 @@ export class EmpleadosComponent implements OnInit {
   //Creamos una variable para almacenar el id del empleado a editar
   selectedEmpleadoId: string | null = null;
 
+  sortColumn: string = 'name'; // columna por la que se esta ordenando
+  sortDirection: 'asc' | 'desc' = 'asc'; // dirección de la ordenación
+
+  //--------------------------------------------------
+
   constructor(public empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
@@ -35,7 +40,9 @@ export class EmpleadosComponent implements OnInit {
     this.empleadoService.getEmpleados().subscribe(
       (data: any) => {
         this.empleados = data;
-        this.ordenarEmpleados(); // Ordenamos empleados por nombre
+
+        //ordenamos empleados por la columna actual
+        this.sortEmpleados(this.sortColumn);
       },
       (error) => {
         M.toast({ html: error.message });
@@ -43,10 +50,34 @@ export class EmpleadosComponent implements OnInit {
     );
   }
 
-  ordenarEmpleados(){
-    this.empleados.sort((a, b) => {
-      // Ordenar por la primera letra del nommbre en orden alfabetico
-      return a.name.localeCompare(b.name); 
+  sortEmpleados(column: string) {
+    // Si la columna seleccionada es la misma que la anterior, invertir la dirección
+    if (this.sortColumn === column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      // Si se selecciona una columna diferente, ordenar en orden ascendente por defecto
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
+  
+    this.empleados.sort((a: any, b: any) => {
+      const aValue = a[column];
+      const bValue = b[column];
+  
+      // Comparar los valores de las columnas
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return this.sortDirection === 'asc'
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
+      }
+  
+      if (typeof aValue === 'number' && typeof bValue === 'number') {
+        return this.sortDirection === 'asc'
+          ? aValue - bValue
+          : bValue - aValue;
+      }
+  
+      return 0; // No se puede ordenar por otros tipos
     });
   }
 
