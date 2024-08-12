@@ -7,7 +7,7 @@ Este proyecto es una aplicación de gestión de empleados desarrollada en la eta
 ## Tecnologías
 
 - **Frontend**: Angular
-- **Backend**: Node.js, Express, morgan, cors, nodemon
+- **Backend**: Node.js, Express, morgan, cors, nodemon, mongoose
 - **Base de Datos**: MongoDB
 
 ## Estructura del Proyecto
@@ -25,9 +25,9 @@ Este proyecto es una aplicación de gestión de empleados desarrollada en la eta
 
 ### Configuración del Backend
 
-1. Navega a la carpeta `backend/`:
+1. Navega a la carpeta principal`:
    ```bash
-   cd backend
+   cd GESTION-EMPLEADOS
    ```
 ### Instala las dependencias y herramientas :
 
