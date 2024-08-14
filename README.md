@@ -22,6 +22,7 @@ Este proyecto es una aplicación de gestión de empleados desarrollada en la eta
 - Node.js
 - NPM (Node Package Manager)
 - MongoDB (para la base de datos)
+- Base de datos previamente creada con la estructura dada. 
 
 ### Configuración del Backend
 
@@ -72,5 +73,3 @@ La documentación de la API se encuentra en el archivo apiTests.md dentro de la 
 
 **Autor**
 Jari Coral
-
-Asegúrate de ajustar cualquier detalle según tu configuración específica 

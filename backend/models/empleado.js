@@ -1,11 +1,31 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //importamos mongoose 
 const {Schema} = mongoose; //Destructura el objeto schemma de mongoose para definir el esquema del modelo 
 
 const EmpleadoSchema = new Schema({
-    name:{type: String, require: true},
-    position:{type: String, require: true},
-    office:{type: String, require: true},
-    salary:{type: Number, require: true},
+
+    name:
+    {
+        type: String,
+         require: true
+        },
+
+    position:
+    {
+        type: String,
+        require: true
+    },
+    
+    office:
+    {
+        type: String, 
+        require: true
+    },
+
+    salary:
+    {
+        type: Number,
+        require: true
+    },
 });
 
 // Exporta el modelo de empleado basado en el modelo definido

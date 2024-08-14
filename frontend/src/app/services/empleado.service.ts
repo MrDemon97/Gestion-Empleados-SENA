@@ -12,7 +12,7 @@ export class EmpleadoService {
   readonly URL_API = 'http://localhost:3000/api/empleados';
 
   constructor(private http: HttpClient) {
-    this.selectedEmpleado = new Empleado();
+    this.selectedEmpleado = new Empleado(); 
     this.empleados = [];
   }
 

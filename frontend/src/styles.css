@@ -1,91 +1,76 @@
+/* Asegura que el contenedor principal tenga un ancho máximo adecuado en pantallas más grandes */
+.container {
+  width: 100%;
+  max-width: 1200px; /* O el ancho máximo que prefieras */
+  margin: 0 auto;
+}
 
- /* Estilo para el fondo con la imagen distorsionada y oscurecida */
+/* Estilo para el fondo con la imagen distorsionada y oscurecida */
 body {
-    margin: 0;
-    padding: 0;
-    background: url('https://images.unsplash.com/photo-1712397943847-e104395a1a8b?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
-    background-size: cover;
-    filter: brightness(65%); /* Solo oscurece, sin desenfoque */
-  }
-  
-  /* Estilo para el contenedor principal */
-  .container {
-    position: relative;
-    backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
-    border-radius: 10px; /* Opcional: para bordes redondeados */
-    padding: 20px;
-  }
-  
-  /* Estilo para las tarjetas */
-  .card {
-    background: rgba(255, 255, 255, 80%); /* Color blanco con mayor opacidad */
-    backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
-    border-radius: 10px; /* Opcional: para bordes redondeados */
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilo para la barra de navegación */
-  nav {
-    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
-    backdrop-filter: blur(4px); /* Efecto cristal claro, leve */
-  }
-  
-  /* Estilo para el footer */
-  footer {
-    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
-    backdrop-filter: blur(4px); /* Efecto cristal claro, leve */
-    padding: 10px;
-    color: white;
-    text-align: center;
-  }
-  
-  /* Estilo para los botones */
-  .btn, .btn-large, .btn-small, .btn-flat {
-    height: 30px;
-    padding: 0;
-    line-height: 0px;
-  }
-  
-  /* Asegura que el contenedor tenga el ancho completo de la página */
-  .container {
-    width: 100%;
-    max-width: 1200px; /* O el ancho máximo que prefieras */
-    margin: 0 auto;
-  }
-  
-  /* Asegura que las tarjetas se alineen correctamente */
-  .card {
-    margin-bottom: 20px;
-  }
-  
-  /* Asegura que los campos de entrada se ajusten al ancho del contenedor */
-  .input-field input {
-    width: 100%;
-  }
-  /* Cambia el color del texto del placeholder */
-  input::placeholder{
-    color:darkcyan;
-  }
+  margin: 0;
+  padding: 0;
+  background: url('https://images.unsplash.com/photo-1712397943847-e104395a1a8b?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+  background-size: cover;
+  filter: brightness(65%); /* Solo oscurece, sin desenfoque */
+}
 
-  /* Estilos para la tabla*/
-  td.salaryList {
-    text-align: end;
-  }
+/* Estilo para el contenedor principal con efecto cristal */
+.container {
+  position: relative;
+  backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
+  border-radius: 10px; /* Opcional: para bordes redondeados */
+  padding: 20px;
+}
 
-  td.officeList, td.positionList{
-    text-align: center;
-  }
+/* Estilo para las tarjetas */
+.card {
+  background: rgba(255, 255, 255, 80%); /* Color blanco con mayor opacidad */
+  backdrop-filter: blur(8px); /* Desenfoque de fondo para el efecto cristal */
+  border-radius: 10px; /* Opcional: para bordes redondeados */
+  padding: 20px;
+  margin-bottom: 20px;
+}
 
-  td.nameList{
-    text-align: right;
-  }
+/* Estilo para la barra de navegación */
+nav {
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
+  backdrop-filter: blur(4px); /* Efecto cristal claro, leve */
+}
 
-  th{
-    text-align: center;
-  }
+/* Estilo para el footer */
+footer {
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
+  backdrop-filter: blur(4px); /* Efecto cristal claro, leve */
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
 
-  /* Cambia el cursor al pasar sobre los encabezados de columna */
+/* Estilo para los botones */
+.btn, .btn-large, .btn-small, .btn-flat {
+  height: 30px;
+  padding: 0;
+  line-height: 0px;
+}
+
+/* Estilos para la tabla */
+td.salaryList {
+  text-align: end;
+}
+
+td.officeList, td.positionList {
+  text-align: center;
+}
+
+td.nameList {
+  text-align: right;
+}
+
+th {
+  text-align: center;
+}
+
+/* Cambia el cursor al pasar sobre los encabezados de columna */
 .orderOption {
   cursor: pointer;
   position: relative;
@@ -95,7 +80,7 @@ body {
 /* Aumenta la escala del texto al pasar el ratón */
 .orderOption:hover {
   transform: scale(1.05);
-  color:darkcyan;
+  color: darkcyan;
 }
 
 /* Muestra un texto de ayuda al pasar el ratón */
@@ -118,11 +103,10 @@ body {
   opacity: 1;
 }
 
-  .butonList {
-    text-align: center;
-  }
-
-
-
- 
-  
+.butonList {
+  text-align: center;
+}
+/* Cambia el color del texto del placeholder */
+input::placeholder{
+  color:darkcyan;
+}

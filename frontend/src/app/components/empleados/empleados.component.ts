@@ -65,12 +65,14 @@ export class EmpleadosComponent implements OnInit {
       const bValue = b[column];
   
       // Comparar los valores de las columnas
+
+      // Comparar cadenas 
       if (typeof aValue === 'string' && typeof bValue === 'string') {
         return this.sortDirection === 'asc'
           ? aValue.localeCompare(bValue)
           : bValue.localeCompare(aValue);
       }
-  
+      // Comparar numeros
       if (typeof aValue === 'number' && typeof bValue === 'number') {
         return this.sortDirection === 'asc'
           ? aValue - bValue
@@ -106,7 +108,7 @@ export class EmpleadosComponent implements OnInit {
       M.toast({ html: 'Todos los campos deben estar llenos' });
       return;
     }
-    console.log('Datos del formulario', form?.value)
+    //console.log('Datos del formulario', form?.value)
 
     // Verifica si estamos en modo edición
     if (this.isEditing) {

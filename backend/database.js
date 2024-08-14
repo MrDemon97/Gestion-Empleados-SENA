@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
+//const URI = 'mongorestore --uri mongodb+srv://jaircoral88:<PASSWORD>@cluster0.pwtrmtj.mongodb.net';
 const URI = 'mongodb://127.0.0.1:27017/empleados_db';
-
 console.log('Tratando de conectar a MongoDB')
 
 mongoose.connect(URI)
