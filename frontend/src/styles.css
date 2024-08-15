@@ -11,6 +11,7 @@ input{
 .btn-small {
   margin-left: 2px;
   margin-right: 2px;
+  width: 2.8em;
 }
 
 /* Alineamos los botones de la tabla */
