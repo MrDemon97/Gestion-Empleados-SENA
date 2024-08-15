@@ -79,3 +79,9 @@ input{
 .glass-table td {
   background: rgba(255, 255, 255, 0.1); /* Fondo para celdas de tabla */
 }
+
+/* Estilo para cuando el ratón está sobre el enlace */
+ul li a:hover {
+  text-decoration: underline; /* Añade el subrayado al pasar el ratón */
+  color: #af9a9a; /* Color del texto al pasar el ratón (opcional) */
+}
