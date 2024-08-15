@@ -1,38 +1,80 @@
-.btn-small{
+
+body {
+  background: url('https://img.freepik.com/fotos-premium/planta-maceta-fondo-negro-planta-hoja-verde-centro_921096-29.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+input{
+  color:#fff;
+}
+
+.btn-small {
   margin-left: 2px;
   margin-right: 2px;
 }
 
 /* Alineamos los botones de la tabla */
-.tdOptions{
+.tdOptions {
   text-align: center;
 }
 
 /* Alineamos el salario hacia la derecha */
-.tdSalary{
+.tdSalary {
   text-align: right;
 }
 
 /* Centramos encabezados de la tabla */
-.orderOption{
+.orderOption {
   text-align: center;
 }
 
-/* Opciones para interactuar con cursor mause  */
-.orderOption:hover{
-  scale: 1.2;
+/* Opciones para interactuar con cursor mause */
+.orderOption:hover {
+  transform: scale(1.2); /* Escala el tamaño */
   cursor: pointer;
-  color: aquamarine;
+  color: aquamarine; /* Color del texto al pasar el mouse */
 }
 
-.optionRed:hover{
-  scale: 1.2;
+.optionRed:hover {
+  transform: scale(1.2); /* Escala el tamaño */
   cursor: pointer;
-  color: red;
+  color: red; /* Color al pasar el mouse */
 }
 
-.optionBlue:hover{
-  scale: 1.2;
+.optionBlue:hover {
+  transform: scale(1.2); /* Escala el tamaño */
   cursor: pointer;
-  color: cyan;
+  color: cyan; /* Color al pasar el mouse */
+}
+
+/* Efecto glass para tarjetas, formularios y tablas */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1); /* Fondo blanco con opacidad */
+  backdrop-filter: blur(10px); /* Aplicar desenfoque de fondo */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  padding: 2px; /* Espaciado interno */
+  color: #fff; /* Color del texto */
+}
+
+/* Estilo específico para la tabla */
+.glass-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.glass-table th,
+.glass-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.glass-table th {
+  background: rgba(255, 255, 255, 0.2); /* Fondo para encabezados de tabla */
+  backdrop-filter: blur(10px); /* Desenfoque */
+  color: #fff; /* Color del texto */
+}
+
+.glass-table td {
+  background: rgba(255, 255, 255, 0.1); /* Fondo para celdas de tabla */
 }
