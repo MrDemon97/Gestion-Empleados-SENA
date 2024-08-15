@@ -1,57 +1,46 @@
-<div class="container">
+<div class="container s12 m6 14">
   <div class="row">
     <!-- Formulario para Crear o Editar Empleado -->
-    <div class="col s12 m6 formulario">
+    <div class="col s12 m6 l4">
       <div class="card">
         <div class="card-content">
           <!-- Mostrar título dinámico -->
           <span class="card-title">{{ isEditing ? 'Actualizar Empleado' : 'Crear Empleado' }}</span>
           <form #empleadoForm="ngForm" (ngSubmit)="agregarEmpleado(empleadoForm)">
-       
             <div class="row">
               <div class="input-field col s12">
-                <input
-                  type="text"
-                  name="name"
-                  [(ngModel)]="empleadoService.selectedEmpleado.name"
-                  placeholder="Ingrese el nombre"
-                />
+                <input type="text" name="name" [(ngModel)]="empleadoService.selectedEmpleado.name"
+                  placeholder="Ingrese el nombre" id="name" />
                 <label for="name">Nombre</label>
               </div>
 
               <div class="input-field col s12">
-                <input
-                  type="text"
-                  name="position"
-                  [(ngModel)]="empleadoService.selectedEmpleado.position"
-                  placeholder="Ingrese el cargo"
-                />
+                <input type="text" name="position" [(ngModel)]="empleadoService.selectedEmpleado.position"
+                  placeholder="Ingrese el cargo" id="position" />
                 <label for="position">Cargo</label>
               </div>
 
               <div class="input-field col s12">
-                <input
-                  type="text"
-                  name="office"
-                  [(ngModel)]="empleadoService.selectedEmpleado.office"
-                  placeholder="Ingrese el lugar de trabajo"
-                />
+                <input type="text" name="office" [(ngModel)]="empleadoService.selectedEmpleado.office"
+                  placeholder="Ingrese el lugar de trabajo" id="office" />
                 <label for="office">Lugar de Trabajo</label>
               </div>
 
               <div class="input-field col s12">
-                <input
-                  type="number"
-                  name="salary"
-                  [(ngModel)]="empleadoService.selectedEmpleado.salary"
-                  placeholder="Ingrese el salario"
-                />
+                <input type="number" name="salary" [(ngModel)]="empleadoService.selectedEmpleado.salary"
+                  placeholder="Ingrese el salario" id="salary" />
                 <label for="salary">Salario</label>
               </div>
 
-              <div class="card-action">
-                <button type="button" class="btn" (click)="resetForm(empleadoForm)">Limpiar</button>
-                <button type="submit" class="btn">Guardar</button>
+              <div class="card-action center">
+                <button type="button" class="btn-small waves-effect waves-light tooltipped" data-tooltip="Limpiar"
+                  (click)="resetForm(empleadoForm)">
+                  <i class="material-icons center">clear</i>
+                </button>
+
+                <button type="submit" class="btn-small waves-effect waves-light tooltipped" data-tooltip="Guardar">
+                  <i class="material-icons center">save</i>
+                </button>
               </div>
             </div>
           </form>
@@ -60,30 +49,34 @@
     </div>
 
     <!-- Lista de Empleados -->
-    <div class="col s12 m6 tabla">
+    <div class="col s12 m6 l8">
       <div class="card">
         <div class="card-content">
           <span class="card-title">Lista de Empleados</span>
-          <table class="highlight">
+          <table class="responsive-table">
             <thead>
               <tr>
-                <th class = "orderOption" (click)="sortEmpleados('name')">Nombre</th>
-                <th class = "orderOption" (click)="sortEmpleados('position')">Cargo</th>
-                <th class = "orderOption" (click)="sortEmpleados('office')">Oficina</th>
-                <th class = "orderOption" (click)="sortEmpleados('salary')">Salario</th>
-                <th> Acciones </th>
+                <th class="orderOption tooltipped" data-tooltip="Ordenar por Nombre" (click)="sortEmpleados('name')">Nombre</th>
+                <th class="orderOption tooltipped" data-tooltip="Ordenar por Cargo" (click)="sortEmpleados('position')">Cargo</th>
+                <th class="orderOption tooltipped" data-tooltip="Ordenar por Oficina" (click)="sortEmpleados('office')">Oficina</th>
+                <th class="orderOption tooltipped" data-tooltip="Ordenar por Salario" (click)="sortEmpleados('salary')">Salario</th>
+                <th class="tooltipped" data-tooltip="Eliminar o Editar">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let empleado of empleados">
-                <td class="tableList nameList">{{ empleado.name }}</td>
-                <td class="tableList positionList">{{ empleado.position }}</td>
-                <td class="tableList officeList">{{ empleado.office }}</td>
-                <td class="tableList salaryList">{{ empleado.salary }}</td>
-                <td class="tableList butonList">
-                  <button class="btn blue" (click)="editarEmpleado(empleado)">Editar</button>
-                  <button class="btn red" (click)="eliminarEmpleado(empleado._id)">Eliminar</button>
-                </td>
+                <td>{{ empleado.name }}</td>
+                <td>{{ empleado.position }}</td>
+                <td>{{ empleado.office }}</td>
+                <td class="tdSalary">{{ empleado.salary }}</td>
+                <td class="tdOptions">
+                  <!-- Icono de editar como botón interactivo -->
+                  <i class="material-icons optionBlue icon-action" (click)="editarEmpleado(empleado)">edit</i>
+                
+                  <!-- Icono de eliminar como botón interactivo -->
+                  <i class="material-icons optionRed icon-action" (click)="eliminarEmpleado(empleado._id)">delete_forever</i>
+                </td>             
+                
               </tr>
             </tbody>
           </table>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { EmpleadoService } from '../../services/empleado.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Empleado } from '../../models/empleado';
@@ -33,6 +33,14 @@ export class EmpleadosComponent implements OnInit {
     // Al inicar reseteamos el formulario y optenemos los datos de empleados
     this.resetForm();
     this.getEmpleados();
+  }
+
+  ngAfterViewInit(): void {
+    // Inicializa los tooltips
+    const tooltippedElems = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(tooltippedElems, {
+      enterDelay: 500
+    });
   }
 
   getEmpleados() {

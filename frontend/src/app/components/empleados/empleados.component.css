@@ -1,33 +1,8 @@
 
-.btn {
-  width: 8.5em;
-  max-width: 90px;
-  min-width: 90px;
-  margin: 2px;
-}
-
-/* Asegura que el contenedor tenga el ancho completo de la página */
-.container {
-  width: 100%;
-  max-width: 1200px; /* O el ancho máximo que prefieras */
-  margin: 0 auto;
-}
-
-/* Asegura que las tarjetas se alineen correctamente */
-.card {
-  margin-bottom: 20px;
-}
 
 /* Asegura que los campos de entrada se ajusten al ancho del contenedor */
 .input-field input {
   width: 100%;
-}
-
-/* Ajustes adicionales para mejorar la disposición en pantallas pequeñas */
-@media (max-width: 600px) {
-  .col.s12.m6.l5, .col.s12.m6.l7 {
-    width: 100% !important;
-  }
 }
 
 /* Asegura que el formulario y la tabla no se desborden a los lados */
@@ -35,16 +10,6 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-}
-
-/* Centramos los botones en el formulario */
-.card-action{
-  margin: auto;
-}
-
-/* Mejora la disposición de los botones */
-.card-action .btn {
-  margin-right: 10px;
 }
 
 /* Añade espacio entre las tarjetas */
@@ -57,13 +22,5 @@
   overflow-x: auto;
 }
 
-/* Especificamos los tamaños del formulario y de la entrada de datos */
-.row .col.m6.formulario{
-  width: 40%;
-}
-
-.row .col.m6.tabla {
-  width: 60%;
-}
 
 
