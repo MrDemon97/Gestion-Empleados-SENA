@@ -57,6 +57,8 @@ GET http://localhost:3000/api/empleados
 **Petición:**
 GET http://localhost:3000/api/empleados/:id
 
+//66a055e78507b9261f0d2f90 id prueba
+
 **Ejemplo Petición:**
 GET http://localhost:3000/api/empleados/60d21b4667d0d8992e610c85
 

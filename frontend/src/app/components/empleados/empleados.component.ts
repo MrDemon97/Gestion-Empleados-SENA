@@ -22,6 +22,7 @@ export class EmpleadosComponent implements OnInit {
   //Creamos una variable para almacenar el id del empleado a editar
   selectedEmpleadoId: string | null = null;
 
+  // Variables para el nombre del la columna selecciona 
   sortColumn: string = 'name'; // columna por la que se esta ordenando
   sortDirection: 'asc' | 'desc' = 'asc'; // dirección de la ordenación
 
