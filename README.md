@@ -151,5 +151,5 @@ Espacio para pantallazo de la lista de empleados:
 
 
 **Autor**
-Jari Coral
+Jair Coral
 
